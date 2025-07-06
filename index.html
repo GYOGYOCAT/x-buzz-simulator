@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X</title>
+    <meta name="description" content="Xでバイラル体験をしよう">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="X,バイラル,Twitter,シミュレーター,バズ,SNS体験">
+    <meta property="og:title" content="X">
+    <meta property="og:description" content="Xでバイラル体験をしよう">
+    <meta property="og:type" content="website">
+    
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1106158066306697"
+         crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="realistic-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar -->
+        <nav class="sidebar-nav">
+            <div class="nav-header">
+                <div class="x-logo">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="logo-icon">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>ホーム</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-search"></i>
+                    <span>話題を検索</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="far fa-bell"></i>
+                    <span>通知</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="far fa-envelope"></i>
+                    <span>メッセージ</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="far fa-bookmark"></i>
+                    <span>ブックマーク</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="far fa-user"></i>
+                    <span>プロフィール</span>
+                </a>
+            </div>
+            
+            <button class="post-button">ポスト</button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <div class="content-header">
+                <h1>ホーム</h1>
+            </div>
+
+            <!-- Post Composer -->
+            <div class="compose-tweet">
+                <div class="compose-header">
+                    <div class="profile-avatar">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="プロフィール画像">
+                    </div>
+                    <div class="compose-input">
+                        <textarea id="tweetInput" placeholder="いまどうしてる？" maxlength="280"></textarea>
+                        <div class="compose-options">
+                            <div class="media-options">
+                                <button class="option-btn" id="imageBtn">
+                                    <i class="far fa-image"></i>
+                                </button>
+                                <button class="option-btn">
+                                    <i class="fas fa-poll"></i>
+                                </button>
+                                <button class="option-btn">
+                                    <i class="far fa-smile"></i>
+                                </button>
+                                <button class="option-btn">
+                                    <i class="far fa-calendar"></i>
+                                </button>
+                                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                            </div>
+                            <div class="post-controls">
+                                <div class="char-counter">
+                                    <span id="charCount">0</span>/280
+                                </div>
+                                <button class="tweet-btn" id="tweetBtn" disabled>ポスト</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Image Preview -->
+                        <div class="image-preview-container" id="imagePreview" style="display: none;">
+                            <img id="previewImage" alt="プレビュー">
+                            <button class="remove-image-btn" id="removeImage">&times;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tweet Feed -->
+            <div class="tweet-feed">
+                <!-- User's Viral Tweet -->
+                <article class="tweet viral-tweet" id="viralTweet" style="display: none;">
+                    <div class="tweet-header">
+                        <div class="profile-avatar">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="あなた">
+                        </div>
+                        <div class="tweet-author">
+                            <div class="author-info">
+                                <span class="display-name">あなた</span>
+                                <span class="verified-badge">✓</span>
+                                <span class="username">@your_handle</span>
+                                <span class="timestamp">・<span id="tweetTimestamp">今</span></span>
+                            </div>
+                        </div>
+                        <div class="tweet-menu">
+                            <button class="menu-btn">
+                                <i class="fas fa-ellipsis"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="tweet-content">
+                        <p class="tweet-text" id="viralTweetText"></p>
+                        <div class="tweet-media" id="viralTweetImage" style="display: none;">
+                            <img id="viralImage" alt="投稿画像">
+                        </div>
+                    </div>
+                    
+                    <div class="tweet-stats">
+                        <div class="engagement-stats">
+                            <span class="stat-item">
+                                <span id="viewCount">0</span> 回表示
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="tweet-actions">
+                        <button class="action-btn reply-btn">
+                            <i class="far fa-comment"></i>
+                            <span class="action-count" id="replyCount">0</span>
+                        </button>
+                        <button class="action-btn retweet-btn">
+                            <i class="fas fa-retweet"></i>
+                            <span class="action-count" id="retweetCount">0</span>
+                        </button>
+                        <button class="action-btn like-btn">
+                            <i class="far fa-heart"></i>
+                            <span class="action-count" id="likeCount">0</span>
+                        </button>
+                        <button class="action-btn bookmark-btn">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                        <button class="action-btn share-btn">
+                            <i class="fas fa-share"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Sample Tweets -->
+                <article class="tweet mini-viral">
+                    <div class="tweet-header">
+                        <div class="profile-avatar">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=40&h=40&fit=crop&crop=face" alt="きのこたけのこ">
+                        </div>
+                        <div class="tweet-author">
+                            <div class="author-info">
+                                <span class="display-name">きのこたけのこ</span>
+                                <span class="username">@kinoko_takenoko</span>
+                                <span class="timestamp">・1時間</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tweet-content">
+                        <p class="tweet-text">きのこの山とたけのこの里どっちが好き？<br>永遠のテーマだよね🍄🥨 #きのこたけのこ戦争</p>
+                    </div>
+                    <div class="tweet-stats">
+                        <div class="engagement-stats">
+                            <span class="stat-item">2.4万 回表示</span>
+                        </div>
+                    </div>
+                    <div class="tweet-actions">
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i>
+                            <span class="action-count">156</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-retweet"></i>
+                            <span class="action-count">89</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i>
+                            <span class="action-count">1.2K</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tweet">
+                    <div class="tweet-header">
+                        <div class="profile-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="ユーザー">
+                        </div>
+                        <div class="tweet-author">
+                            <div class="author-info">
+                                <span class="display-name">田中太郎</span>
+                                <span class="username">@tanaka_taro</span>
+                                <span class="timestamp">・2時間</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tweet-content">
+                        <p class="tweet-text">今日の朝食はパンケーキでした🥞 美味しかった！</p>
+                    </div>
+                    <div class="tweet-actions">
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i>
+                            <span class="action-count">12</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-retweet"></i>
+                            <span class="action-count">3</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i>
+                            <span class="action-count">45</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tweet">
+                    <div class="tweet-header">
+                        <div class="profile-avatar">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face" alt="ユーザー">
+                        </div>
+                        <div class="tweet-author">
+                            <div class="author-info">
+                                <span class="display-name">佐藤花子</span>
+                                <span class="username">@sato_hanako</span>
+                                <span class="timestamp">・4時間</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tweet-content">
+                        <p class="tweet-text">新しいカフェ見つけた！コーヒーが本当に美味しい☕️ みんなにもおすすめしたい</p>
+                    </div>
+                    <div class="tweet-actions">
+                        <button class="action-btn">
+                            <i class="far fa-comment"></i>
+                            <span class="action-count">8</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-retweet"></i>
+                            <span class="action-count">15</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i>
+                            <span class="action-count">67</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share"></i>
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="right-sidebar">
+            <!-- Search -->
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="キーワード検索">
+            </div>
+
+            <!-- Trending -->
+            <div class="trending-widget">
+                <h3>いま話題</h3>
+                <div class="trending-item">
+                    <div class="trend-location">日本のトレンド</div>
+                    <div class="trend-topic">#おはよう</div>
+                    <div class="trend-count">12.5万件のポスト</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trend-location">テクノロジー・トレンド</div>
+                    <div class="trend-topic">#AI</div>
+                    <div class="trend-count">45.2万件のポスト</div>
+                </div>
+                <div class="trending-item viral-trend" id="viralTrend" style="display: none;">
+                    <div class="trend-location">🔥 #1 トレンド</div>
+                    <div class="trend-topic" id="userTrend"></div>
+                    <div class="trend-count">150万件のポスト</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trend-location">エンタメ・トレンド</div>
+                    <div class="trend-topic">#映画</div>
+                    <div class="trend-count">28.7万件のポスト</div>
+                </div>
+            </div>
+
+            <!-- Ad Space -->
+            <div class="ad-widget">
+                <div class="ad-label">プロモーション</div>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-1106158066306697"
+                     data-ad-slot="3456789012"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Viral Notification Overlay -->
+    <div class="viral-notification-overlay" id="viralOverlay" style="display: none;">
+        <div class="viral-notification">
+            <div class="viral-icon">🔥</div>
+            <div class="viral-text">
+                <h3>バイラル中！</h3>
+                <p>あなたの投稿が話題になっています</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Notifications -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <script src="realistic-simulator.js"></script>
+    <script>
+        // AdSense initialization
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>
